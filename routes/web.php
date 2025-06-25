@@ -9,3 +9,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/test', function () {
+    return redirect()->back()->with('success', 'This is a success message');
+});
