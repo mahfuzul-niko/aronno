@@ -45,4 +45,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Role::class);
     }
+    public function social($key = null)
+    {
+        $social = json_decode($this->social, true);
+
+        return $key ? ($social[$key] ?? null) : $social;
+    }
 }
