@@ -11,7 +11,7 @@
 
                         <img src="{{ auth()->user()->avatar ? Storage::url(auth()->user()->avatar) : asset('assets/img/no-profile.png') }}" alt="Profile" class="rounded-circle">
                         <h2>{{ auth()->user()->name }} </h2>
-                        <h3>{{ auth()->user()->role->name }}</h3>
+                        <h3>{{ auth()->user()->role }}</h3>
                         <div class="social-links mt-2">
                             <a href="{{auth()->user()->social('twitter')}}" class="twitter" target="_blank"><i class="bi bi-twitter"></i></a>
                             <a href="{{auth()->user()->social('facebook')}}" class="facebook" target="_blank"><i class="bi bi-facebook"></i></a>

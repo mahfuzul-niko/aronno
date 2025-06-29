@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('phone')->nullable();
             $table->string('avatar')->nullable();
             $table->text('address')->nullable();
-            $table->unsignedBigInteger('role_id')->default(2);
+            $table->string('role')->default('user');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

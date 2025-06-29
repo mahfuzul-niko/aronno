@@ -29,8 +29,7 @@ class LoginController extends Controller
     protected function redirectTo(): string
     {
         if (Auth::check()) {
-            // dd(Auth::user()->role->name);
-            return match (Auth::user()->role->name) {
+            return match (Auth::user()->role) {
                 'admin' => '/admin/dashboard',
                 default => '/',
             };

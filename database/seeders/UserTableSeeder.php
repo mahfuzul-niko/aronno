@@ -15,22 +15,13 @@ class UserTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('roles')->insert([
-            [
-                'name' => 'admin',
-            ],
-            [
-                'name' => 'user',
-            ],
 
-
-        ]);
         DB::table('users')->insert([
             [
                 'name' => 'Admin User',
                 'username' => 'admin_user',
                 'phone' => '1234567890',
-                'role_id' => Role::where('name', 'admin')->first()->id,
+                'role' => 'admin',
                 'email' => 'admin@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
@@ -39,7 +30,7 @@ class UserTableSeeder extends Seeder
                 'name' => 'Regular User',
                 'username' => 'regular_user',
                 'phone' => '1234567891',
-                'role_id' => Role::where('name', 'user')->first()->id,
+                'role' => 'user',
                 'email' => 'user@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),
@@ -49,7 +40,7 @@ class UserTableSeeder extends Seeder
                 'name' => 'Mahfuzul Islam',
                 'username' => 'mahfuzul1125',
                 'phone' => '1234567893',
-                'role_id' => Role::where('name', 'admin')->first()->id,
+                'role' => 'admin',
                 'email' => 'mahfuzul1125@gmail.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('password'),

@@ -18,7 +18,7 @@
         @endif
 
 
-        <div class="col-md-6">
+        <div class="col-12">
             <label for="first_name" class="form-label">First Name</label>
             <input id="first_name" type="text" name="name"
                 class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autofocus>
