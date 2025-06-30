@@ -27,6 +27,15 @@ class UserTableSeeder extends Seeder
                 'password' => Hash::make('password'),
             ],
             [
+                'name' => 'agent User',
+                'username' => 'agent_user',
+                'phone' => '1234567890',
+                'role' => 'agent',
+                'email' => 'agent@gmail.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('password'),
+            ],
+            [
                 'name' => 'Regular User',
                 'username' => 'regular_user',
                 'phone' => '1234567891',

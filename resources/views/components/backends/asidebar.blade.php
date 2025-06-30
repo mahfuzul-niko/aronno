@@ -2,44 +2,46 @@
 <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
+        @switch(auth()->user()->role)
+            @case('admin')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.dashboard') ? '' : 'collapsed' }}"
+                        href="{{ route('admin.dashboard') }}">
+                        <i class="bi bi-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+            @break
+
+            @case('agent')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('admin.agent.dashboard') ? '' : 'collapsed' }}"
+                        href="{{ route('admin.agent.dashboard') }}">
+                        <i class="bi bi-grid"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+            @break
+        @endswitch
+
 
         <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('admin.dashboard') ? '' : 'collapsed' }}"
-                href="{{ route('admin.dashboard') }}">
-                <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
-            </a>
-
-        </li><!-- End Dashboard Nav -->
-
-        {{-- <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('agent.category.*', 'agent.unit.*') ? '' : 'collapsed' }}"
+            <a class="nav-link {{ request()->routeIs('admin.category.*') ? '' : 'collapsed' }}"
                 data-bs-target="#category-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Category</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="category-nav"
-                class="nav-content collapse {{ request()->routeIs('agent.category.*', 'agent.unit.*') ? 'show' : '' }}"
+                class="nav-content collapse {{ request()->routeIs('admin.category.*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('agent.category.list') }}"
-                        class="{{ request()->routeIs('agent.category.list') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Category Listing</span>
+                    <a href="{{ route('admin.category.index') }}"
+                        class="{{ request()->routeIs('admin.category.index') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Category</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route('agent.category.create') }}"
-                        class="{{ request()->routeIs('agent.category.create') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Category Create</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('agent.unit.list') }}"
-                        class="{{ request()->routeIs('agent.unit.list') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Unit Listing</span>
-                    </a>
-                </li>
+
             </ul>
-        </li><!-- End Category Nav --> --}}
+        </li><!-- End Category Nav -->
 
 
 

@@ -11,6 +11,10 @@ class PagesController extends Controller
     {
         return view('backend.dashboard');
     }
+    public function agentdashboard()
+    {
+        return view('backend.agent-dashboard');
+    }
     public function profile()
     {
         // dd(auth()->user()->avatar);
