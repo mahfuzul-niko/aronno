@@ -1,5 +1,5 @@
 <x-backend>
-    <x-slot name="title">Categories</x-slot>
+    <x-slot name="title">Room Features</x-slot>
 
     <div class="col-12">
         <div class="card">
@@ -19,8 +19,8 @@
                         @endif
                     </div>
                     <div>
-                        <a type="button" class="btn btn-success" data-bs-toggle="modal"
-                            data-bs-target="#createCategory"><i class="bi bi-plus-circle"></i> Add Category</a>
+                        <a type="button" class="btn btn-success mb-3" data-bs-toggle="modal"
+                            data-bs-target="#createFeature"><i class="bi bi-plus-circle"></i> Add Feature</a>
                     </div>
                     <!-- Table with stripped rows -->
                     <div class="table-responsive">
@@ -28,22 +28,25 @@
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Category Name</th>
+                                    <th scope="col">Features Logo</th>
+                                    <th scope="col">Features Title</th>
                                     <th scope="col ">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $key => $category)
+                                @foreach ($features as $key => $feature)
                                     <tr>
                                         <th scope="row">{{ $key + 1 }}</th>
-                                        <td class="">{{ $category->title }}</td>
+                                        <td class="">{{ $feature->title }}</td>
+                                        <td><img src="{{ $feature->image ? Storage::url($feature->image) : asset('assets/img/no-profile.png') }}"
+                                                style="height: 50px; width: auto;" alt=""></td>
                                         <td>
                                             <div class="text-nowrap">
                                                 <a class="btn btn-primary btn-sm d-inline-block" type="button"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#category{{ $category->id }}"><i
+                                                    data-bs-target="#feature{{ $feature->id }}"><i
                                                         class="bi bi-pen"></i></a>
-                                                <form action="{{ route('admin.category.delete', $category) }}"
+                                                <form action="{{ route('admin.feature.delete', $feature) }}"
                                                     method="POST" class="d-inline-block m-0 p-0">
                                                     @csrf
                                                     @method('DELETE')
@@ -52,29 +55,36 @@
                                                 </form>
                                             </div>
                                         </td>
-                                        <div class="modal fade" id="category{{ $category->id }}" tabindex="-1"
+                                        <div class="modal fade" id="feature{{ $feature->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Update
-                                                            Category</h1>
+                                                            feature</h1>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{ route('admin.category.update', $category) }}"
+                                                        <form action="{{ route('admin.feature.update', $feature) }}" enctype="multipart/form-data"
                                                             method="POST">
                                                             @csrf
-                                                            <div class="form-gorup">
-                                                                <label for="category" class="form-label mt-3">Category
-                                                                    Name</label>
+                                                            <div class="form-gorup mb-3">
+                                                                <label for="feature" class="form-label ">feature
+                                                                    Title</label>
                                                                 <input type="text" class="form-control"
-                                                                    id="category" name="title"
-                                                                    value="{{ $category->title }}"
-                                                                    placeholder="Enter Category Name">
+                                                                    id="feature" name="title"
+                                                                    value="{{ $feature->title }}"
+                                                                    placeholder="Enter feature Name">
                                                             </div>
-                                                            <div class="text-end  mt-3">
+                                                            <div class="form-gorup mb-3">
+                                                                <label for="feature" class="form-label ">feature
+                                                                    Image</label>
+                                                                <input type="file" class="form-control"
+                                                                    name="image">
+                                                            </div>
+
+                                                            <div class="text-end">
 
                                                                 <button type="submit"
                                                                     class="btn btn-primary">Save</button>
@@ -97,22 +107,28 @@
         </div>
         <!-- Button trigger modal -->
 
-        <div class="modal fade" id="createCategory" tabindex="-1" aria-labelledby="createCategory" aria-hidden="true">
+        <div class="modal fade" id="createFeature" tabindex="-1" aria-labelledby="createFeature" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content ">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="createCategory">Create Category</h1>
+                        <h1 class="modal-title fs-5" id="createFeature">Create feature</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="{{ route('admin.category.store') }}" method="POST">
+                        <form action="{{ route('admin.feature.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-gorup">
-                                <label for="category" class="form-label mt-3">Category Name</label>
-                                <input type="text" class="form-control" id="category" name="title"
-                                    placeholder="Enter Category Name">
+                            <div class="form-gorup mb-3">
+                                <label for="feature" class="form-label ">Feature
+                                    Title</label>
+                                <input type="text" class="form-control" id="feature" name="title"
+                                    placeholder="Enter feature Name">
                             </div>
-                            <div class="text-end  mt-3">
+                            <div class="form-gorup mb-3">
+                                <label for="feature" class="form-label ">Feature
+                                    Image</label>
+                                <input type="file" class="form-control" name="image">
+                            </div>
+                            <div class="text-end  ">
 
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </div>

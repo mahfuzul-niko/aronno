@@ -25,7 +25,7 @@
         @endswitch
 
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('admin.category.*') ? '' : 'collapsed' }}"
                 data-bs-target="#category-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Category</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -42,15 +42,29 @@
 
             </ul>
         </li><!-- End Category Nav -->
+ --}}
 
-
-
-
+        <li class="nav-heading">Room Extras</li>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('admin.category.index') ? '' : 'collapsed' }}"
+                href="{{ route('admin.category.index') }}">
+                <i class="bi bi-menu-button-wide"></i>
+                <span>Category</span>
+            </a>
+        </li><!-- End Category Page Nav -->
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('admin.feature.index') ? '' : 'collapsed' }}"
+                href="{{ route('admin.feature.index') }}">
+                <i class="bi bi-menu-button-wide"></i>
+                <span>Feature</span>
+            </a>
+        </li><!-- End Feature Page Nav -->
 
 
 
 
         <li class="nav-heading">Pages</li>
+
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('admin.profile') }}">
