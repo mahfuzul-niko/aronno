@@ -23,26 +23,55 @@
                 </li>
             @break
         @endswitch
+      
 
-
-        {{-- <li class="nav-item">
-            <a class="nav-link {{ request()->routeIs('admin.category.*') ? '' : 'collapsed' }}"
-                data-bs-target="#category-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Category</span><i class="bi bi-chevron-down ms-auto"></i>
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('admin.booking.*') ? '' : 'collapsed' }}" data-bs-target="#booking-nav"
+                data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Booking</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="category-nav"
-                class="nav-content collapse {{ request()->routeIs('admin.category.*') ? 'show' : '' }}"
+            <ul id="booking-nav" class="nav-content collapse {{ request()->routeIs('admin.booking.*') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="{{ route('admin.category.index') }}"
-                        class="{{ request()->routeIs('admin.category.index') ? 'active' : '' }}">
-                        <i class="bi bi-circle"></i><span>Category</span>
+                    <a href="{{ route('admin.booking.index') }}"
+                        class="{{ request()->routeIs('admin.booking.index') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Booking</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.booking.list') }}"
+                        class="{{ request()->routeIs('admin.booking.list') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Booking List</span>
                     </a>
                 </li>
 
             </ul>
-        </li><!-- End Category Nav -->
- --}}
+        </li><!-- End booking Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link {{ request()->routeIs('admin.room.*') ? '' : 'collapsed' }}" data-bs-target="#room-nav"
+                data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Rooms</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="room-nav" class="nav-content collapse {{ request()->routeIs('admin.room.*') ? 'show' : '' }}"
+                data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ route('admin.room.index') }}"
+                        class="{{ request()->routeIs('admin.room.index') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Room</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('admin.room.create') }}"
+                        class="{{ request()->routeIs('admin.room.create') ? 'active' : '' }}">
+                        <i class="bi bi-circle"></i><span>Create Room</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li><!-- End room Nav -->
+
+
 
         <li class="nav-heading">Room Extras</li>
         <li class="nav-item">
@@ -52,13 +81,13 @@
                 <span>Category</span>
             </a>
         </li><!-- End Category Page Nav -->
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('admin.feature.index') ? '' : 'collapsed' }}"
                 href="{{ route('admin.feature.index') }}">
                 <i class="bi bi-menu-button-wide"></i>
                 <span>Feature</span>
             </a>
-        </li><!-- End Feature Page Nav -->
+        </li><!-- End Feature Page Nav --> --}}
 
 
 
