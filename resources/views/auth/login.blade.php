@@ -38,9 +38,9 @@
             <button class="btn btn-primary w-100" type="submit">Login</button>
         </div>
     
-        <div class="col-12 ">
+        {{-- <div class="col-12 ">
             <a href="{{ route('password.request') }}" class="small">Forgot Your Password?</a>
-        </div>
+        </div> --}}
     
         <div class="col-12 ">
             <p class="small mb-0">Don't have an account? <a href="{{ route('register') }}">Create one</a></p>

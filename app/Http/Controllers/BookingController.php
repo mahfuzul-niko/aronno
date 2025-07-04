@@ -102,7 +102,7 @@ class BookingController extends Controller
     }
     public function list()
     {
-        $bookings = Booking::latest()->paginate(2);
+        $bookings = Booking::latest()->paginate(20);
         return view('backend.booking.bookings', compact('bookings'));
     }
 
